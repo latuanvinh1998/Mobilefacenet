@@ -54,7 +54,7 @@ with open(SVM_MODEL, 'rb') as infile:
 	
 transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5])])
 
-cap = cv2.VideoCapture('http://192.168.1.5:4747/video')
+cap = cv2.VideoCapture(0)
 
 def handleswitch():
 
@@ -64,7 +64,11 @@ def handleswitch():
 def handleaddid():
 
 	global switch
+	global class_name, svm_model
+	
 	switch = 0
+	SVM_MODEL =  "../PretrainedModel/classifier.pkl"
+
 
 	if text_input.get() != '':
 
